@@ -28,10 +28,10 @@
 ##################
 
 Param(
-    [Parameter(Mandatory=$true)][string]$u,
-    [Parameter(Mandatory=$true)][string]$s,
-    [Parameter(Mandatory=$true)][string]$b,
-    [Parameter(Mandatory=$false)][string]$a
+    [Parameter(Mandatory=$true)][string]$Recipient,
+    [Parameter(Mandatory=$true)][string]$Subject,
+    [Parameter(Mandatory=$true)][string]$Body,
+    [Parameter(Mandatory=$false)][string]$Attachment
     )
 
 $ErrorActionPreference = "Continue"
@@ -67,9 +67,9 @@ $MailtTo = 'zeallab813@gmail.com'
 $MailFrom = "$env:ComputerName <botmailer813@gmail.com>"  
 if ($a)
     {
-    Send-MailMessage -To "$u" -from "$MailFrom" -Subject $s -Body $b -SmtpServer $Smtp.Server -UseSsl -Attachments $a -Credential $Credentials
+    Send-MailMessage -To "$Recipient" -from "$MailFrom" -Subject $Subject -Body $Body -SmtpServer $Smtp.Server -UseSsl -Attachments $Attachment -Credential $Credentials
     }
 else
     {
-    Send-MailMessage -To "$u" -from "$MailFrom" -Subject $s -Body $b -SmtpServer $Smtp.Server -UseSsl -Credential $Credentials
+    Send-MailMessage -To "$Recipient" -from "$MailFrom" -Subject $Subject -Body $Body -SmtpServer $Smtp.Server -UseSsl -Credential $Credentials
     }
