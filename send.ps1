@@ -65,7 +65,7 @@ $Password = $Smtp.Password | ConvertTo-SecureString
 $Credentials = New-Object System.Management.Automation.PSCredential -ArgumentList $Smtp.User, $Password
 $MailtTo = 'zeallab813@gmail.com'  
 $MailFrom = "$env:ComputerName <botmailer813@gmail.com>"  
-if ($a)
+if ($Attachment)
     {
     Send-MailMessage -To "$Recipient" -from "$MailFrom" -Subject $Subject -Body $Body -SmtpServer $Smtp.Server -UseSsl -Attachments $Attachment -Credential $Credentials
     }
